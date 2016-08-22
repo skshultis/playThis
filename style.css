@@ -1,0 +1,68 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#map, div.ng-scope {
+  height: 100%;
+  z-index: 0;
+}
+
+#searchBoxParent {
+  width: 900px;
+  z-index: 4;
+  position: absolute;
+  top: 7%;
+  height: 100px;
+  display: block;
+  background: transparent;
+  left:4%;
+}
+
+
+.playMarker {
+  display: block;
+  height: 100px;
+  width: 100px;
+  background: blue;
+  z-index: 7;
+}
+
+
+.searchBoxParent {
+  background-color: #fff;
+  border-radius: 7px;
+  border: 3px solid green;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  font-family: Roboto;
+  font-size: 40px;
+  font-weight: 300;
+  height: 60px;
+  margin-left: 17px;
+  margin-top: 10px;
+  outline: none;
+  padding: 0 11px 0 13px;
+  text-overflow: ellipsis;
+  width: 700px;
+  z-index: 3;
+  position: absolute;
+  top: 7%;
+}
+
+.searchBoxParent:focus {
+  border-color: #4d90fe;
+  transform: scale(1.5);
+  left: 20%;
+}
+
+.searchBoxParent:hover {
+  transform: scale(1.5);
+  left: 20%;
+}
+
+
+.searchBoxParent:active {
+  transform: scale(1.5);
+  left: 20%;
+}

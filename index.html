@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="style.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAgLSSq3_ZYw1MLZe3W_pWpfs1BqGEcXEw&libraries=places&sensor=false"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui/0.4.0/angular-ui.js"></script>
+
+  <script src="js/map.js"></script>
+</head>
+
+<body>
+  <div ng-app='playThisMap'>
+    <div ng-controller="MapCtrl">
+      <!-- <div ng-controller='MapCtrl'> -->
+
+
+      <div id="searchBoxParent">
+        <!-- <script type="text/ng-template" id="searchBox.template.html"> -->
+        <input class="searchBoxParent" type="text" ng-model="chosenPlace" googleplace placeholder="Search Address" required />
+        <!-- </script> -->
+      </div>
+
+
+      <div id="map"></div>
+
+
+
+    </div>
+  </div>
+  <!-- <ui-gmap-search-box template="searchBox.template" events="searchBox.events" parentdiv="searchBox.parentdiv"></ui-gmap-search-box>
+  <ui-gmap-markers idkey="map.idkey" models="map.markers" coords="'self'" icon="'icon'" click="'onClicked'" fit="true"></ui-gmap-markers> -->
+
+  <!-- </div>
+</div>
+</div>
+</div> -->
+<!--to add as a map control -->
+
+
+
+
+
+<!-- <ui-gmap-google-map
+
+center="map.center"
+zoom="map.zoom"
+dragging="map.dragging"
+bounds="map.bounds"
+events="map.events"
+options="map.options"
+pan="true"
+control="map.control"
+>
+
+
+
+
+</ui-gmap-google-map>
+-->
+
+
+
+
+</body>
+
+</html>
