@@ -19,23 +19,11 @@ Bundler.require(*Rails.groups)
 module PlayThisApi
   # ...
 
-    # Rails 3/4
 
-    config.middleware.insert_before 0, "Rack::Cors" do
-      allow do
-        origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
-      end
-    end
 
-    # Rails 5
 
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
-      end
-    end
+
+
 
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -45,6 +33,16 @@ module PlayThisApi
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
+
+    # Rails 5
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
+
+
     config.api_only = true
   end
 end
