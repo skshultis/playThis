@@ -1,0 +1,14 @@
+<h2>{{VenueShowViewModel.venue.name}}</h2>
+<p>
+  {{VenueShowViewModel.venue.street}}
+</p>
+
+<div data-ng-repeat="comment in VenueShowViewModel.venue.requests">
+<p>{{comment.content}}</p>
+</div>
+
+<form>
+  <label></label>
+  <input placeholder="Post a new request" data-ng-model="VenueShowViewModel.newComment.content" />
+  <button data-ng-click="VenueShowViewModel.create()">Post</button>
+</form>
