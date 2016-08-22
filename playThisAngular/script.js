@@ -2,7 +2,8 @@ angular
 .module("playThis", [
   "ui.router",
   "ngResource",
-  "venues"
+  "venues",
+  "playThisMap"
 ])
   .config([
     "$stateProvider",
@@ -28,6 +29,12 @@ function RouterFunction($stateProvider) {
       templateUrl: "js/venues/show.html",
       controller: 'VenueShowController',
       controllerAs: 'VenueShowViewModel'
+    })
+    .state("mapIndex", {
+      url: '/map',
+      templateUrl: 'js/maps/index.html',
+      controller: 'MapIndexController',
+      controllerAs: 'MapIndexViewModel'
     });
 
 }
