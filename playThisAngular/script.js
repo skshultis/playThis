@@ -25,7 +25,9 @@ function RouterFunction($stateProvider) {
     })
     .state("venueShow", {
       url: '/venues/:id',
-      templateUrl: "js/venues/show.html"
+      templateUrl: "js/venues/show.html",
+      controller: 'VenueShowController',
+      controllerAs: 'VenueShowViewModel'
     });
 
 }

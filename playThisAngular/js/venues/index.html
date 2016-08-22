@@ -1,8 +1,8 @@
 <h2>These are all the Venues</h2>
 
 <div data-ng-repeat="venue in VenueIndexViewModel.venues">
-  <p>
+  <p><a data-ui-sref="venueShow({id: venue.id})">
     {{venue.name}}
-  </p>
+  </a></p>
 
 </div>
