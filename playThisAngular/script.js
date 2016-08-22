@@ -24,6 +24,11 @@ function VenueFactoryFunc($resource){
 }
 
 function RouterFunction($stateProvider) {
-  //$stateProvider.state("")
-  
+  console.log("Router Invoked");
+  $stateProvider
+    .state("venueIndex", {
+      url: '/venues',
+      templateUrl: 'js/venues/index.html'
+    });
+
 }
