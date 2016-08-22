@@ -1,3 +1,4 @@
+(function() {
 angular
 .module('playThisMap')
 .directive('googleplace', function() {
@@ -57,3 +58,4 @@ angular
     };
 
 });
+})();
