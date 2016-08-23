@@ -8,7 +8,8 @@ angular
   .config([
     "$stateProvider",
     RouterFunction
-  ]);
+  ])
+  .factory("railsPassFactory" [railsPassFactoryFunction]);
 
 
 
@@ -37,4 +38,8 @@ function RouterFunction($stateProvider) {
       controllerAs: 'MapIndexViewModel'
     });
 
+}
+
+function railsPassFactoryFunction(railsMapObj) {
+  return railsMapObj
 }

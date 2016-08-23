@@ -1,7 +1,8 @@
-(function() {
+
 angular
 .module('playThisMap')
-.directive('googleplace', function() {
+.factory("VenueFactory", ["$resource", VenueFactoryFunc])
+.directive('googleplace', ["VenueFactory", "$resource", function(VenueFactory, $resource) {
     return {
         require: 'ngModel',
         link: function(scope, element, attrs, model) {
@@ -31,7 +32,7 @@ angular
                             latitude = results[0].geometry.location.lat();
                             longitude = results[0].geometry.location.lng();
                         }
-                    })
+                    });
                     var image = '../assets/img/playthismap1.png';
                     var marker = new google.maps.Marker({
                         map: map,
@@ -39,12 +40,31 @@ angular
                     });
                     image = marker;
                     image.addListener("click", function() {
-                        console.log("clicked");
-                        console.log(place.place_id);
-                        console.log(place.name);
-                        console.log(place.formatted_address);
-                        console.log("Latitude : " + latitude);
-                        console.log("Longitude : " + longitude);
+                      var obj = {
+                        "placeId" : place.place_id,
+                        "name" : place.name,
+                        "street" : place.formatted_address
+                      };
+                      // console.log(obj);
+
+                      var newVenue = new VenueFactory();
+                      newVenue.placeId = obj.placeId;
+                      newVenue.name = obj.name;
+                      newVenue.street = obj.street;
+                      console.log(newVenue); //works!!
+
+                      newVenue.$save().then(function(res) {
+                        console.log("dayum: ");
+                        console.log(res);
+                      })
+
+                      //console.log(railsMapObj);
+                        // console.log("clicked");
+                        // console.log(place.place_id);
+                        // console.log(place.name);
+                        // console.log(place.formatted_address);
+                        // console.log("Latitude : " + latitude);
+                        // console.log("Longitude : " + longitude);
                     });
                     marker.setPlace({
                         placeId: place.place_id,
@@ -57,5 +77,9 @@ angular
         }
     };
 
-});
-})();
+}]);
+
+
+function VenueFactoryFunc($resource){
+  return $resource("http://localhost:3000/venues/:id", {}, {});
+}
