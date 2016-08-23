@@ -2,7 +2,7 @@
 angular
 .module('playThisMap')
 .factory("VenueFactory", ["$resource", VenueFactoryFunc])
-.directive('googleplace', ["VenueFactory", "$resource", function(VenueFactory, $resource) {
+.directive('googleplace', ["VenueFactory", "$resource", "$state", function(VenueFactory, $resource, $state) {
     return {
         require: 'ngModel',
         link: function(scope, element, attrs, model) {
@@ -56,6 +56,8 @@ angular
                       newVenue.$save().then(function(res) {
                         console.log("dayum: ");
                         console.log(res);
+                        $state.go('venueShow', {id: res.id});
+
                       })
 
                       //console.log(railsMapObj);
