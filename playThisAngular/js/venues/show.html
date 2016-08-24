@@ -1,14 +1,21 @@
-<h2>{{VenueShowViewModel.venue.name}}</h2>
-<p>
-  {{VenueShowViewModel.venue.street}}
-</p>
+<main class="show_page">
 
-<section data-ng-repeat="comment in VenueShowViewModel.venue.requests">
-<p>{{comment.content}}</p>
-</section>
+  <div class="header_main">
+    <img src="assets/img/playthislogo.png" id="logo"/>
+  </div>
 
-<form>
-  <label></label>
-  <input placeholder="Post a new request" data-ng-model="VenueShowViewModel.newComment.content" />
-  <button data-ng-click="VenueShowViewModel.create()">Post</button>
-</form>
+  <h1>{{VenueShowViewModel.venue.name}}</h1>
+  <p>
+    {{VenueShowViewModel.venue.street}}
+  </p>
+
+  <section data-ng-repeat="comment in VenueShowViewModel.venue.requests" id="comment_section">
+  <p>{{comment.content}}</p>
+  </section>
+
+  <form>
+    <label></label>
+    <input placeholder="Post a new request" data-ng-model="VenueShowViewModel.newComment.content" />
+    <button data-ng-click="VenueShowViewModel.create()">Post</button>
+  </form>
+</main>
