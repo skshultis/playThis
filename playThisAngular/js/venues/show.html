@@ -3,19 +3,21 @@
   <div class="header_main">
     <img src="assets/img/playthislogo.png" id="logo"/>
   </div>
+  <div class="venue_name">
+    <h1>{{VenueShowViewModel.venue.name.toUpperCase()}}</h1>
+    <p>
+      {{VenueShowViewModel.venue.street.toUpperCase()}}
+    </p>
+  </div>
 
-  <h1>{{VenueShowViewModel.venue.name}}</h1>
-  <p>
-    {{VenueShowViewModel.venue.street}}
-  </p>
+  <form>
+    <label></label>
+    <input placeholder="SONG REQUEST..." data-ng-model="VenueShowViewModel.newComment.content" />
+    <button data-ng-click="VenueShowViewModel.create()">PLAY THIS</button>
+  </form>
 
   <section data-ng-repeat="comment in VenueShowViewModel.venue.requests" id="comment_section">
   <p>{{comment.content}}</p>
   </section>
 
-  <form>
-    <label></label>
-    <input placeholder="Post a new request" data-ng-model="VenueShowViewModel.newComment.content" />
-    <button data-ng-click="VenueShowViewModel.create()">Post</button>
-  </form>
 </main>
