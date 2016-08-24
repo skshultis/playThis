@@ -57,12 +57,39 @@ angular
                       newVenue.longitude = obj.longitude;
                       console.log(newVenue);
 
+
                       newVenue.$save().then(function(res) {
+
                         console.log(res);
-                        console.log(err);
                         $state.go('venueShow', {id: res.id});
 
-                      }).catch(function(err) {console.log("Error: ", err);});
+                      }).catch(function(res) {
+
+                        placeId = res.config.data.placeId;
+                        ven = VenueFactory.query({}, function(response){
+                          for (var property in response) {
+                            if(response[property].placeId === res.config.data.placeId) {
+                              $state.go('venueShow', {id: response[property].id})
+                            }
+                          }
+
+                        });
+
+
+                        for(i = 0; i < ven.length; i++){
+                          if(ven.i.placeId === res.config.data.placeId){
+                            console.log("i am the same poop");
+                            console.log(ven[i]);
+                          } else {
+                            console.log("i am not the same")
+                          }
+                        }
+                        console.log(ven)
+
+                        $state.go('venueShow', {placeId: res.config.data.placeId})
+                        //Doesn't work. Need to somehow get associated id from placeId,
+                        // set newvenue.id in .catch and redirect to the id's show page.
+                    });
 
                       //console.log(railsMapObj);
                         // console.log("clicked");
