@@ -26,7 +26,9 @@ ActiveRecord::Schema.define(version: 20160821014137) do
   create_table "venues", force: :cascade do |t|
     t.string   "name"
     t.string   "street"
-    t.string   "city"
+    t.string   "placeId"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -8,7 +8,8 @@ angular
   .config([
     "$stateProvider",
     RouterFunction
-  ]);
+  ])
+  .factory("railsPassFactory" [railsPassFactoryFunction]);
 
 
 
@@ -38,3 +39,9 @@ function RouterFunction($stateProvider) {
     });
 
 }
+
+function railsPassFactoryFunction(railsMapObj) {
+  return railsMapObj
+}
+
+//Tyler doesn't know how git pull works!
