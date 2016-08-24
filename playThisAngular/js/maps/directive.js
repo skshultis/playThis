@@ -61,6 +61,9 @@ angular
                       newVenue.$save().then(function(res) {
 
                         console.log(res);
+
+
+
                         $state.go('venueShow', {id: res.id});
 
                       }).catch(function(res) {
