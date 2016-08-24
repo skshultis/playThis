@@ -59,7 +59,7 @@ angular
 
                       newVenue.$save().then(function(res) {
                         console.log(res);
-                        console.log(err);
+                        //console.log(err);
                         $state.go('venueShow', {id: res.id});
 
                       }).catch(function(err) {console.log("Error: ", err);});
