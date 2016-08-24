@@ -37,7 +37,7 @@ function VenueShowControllerFunction(VenueFactory, RequestFactory, $stateParams,
         console.log(response);
         //console.log(vm.newComment)
         vm.venue.requests.push(response);
-        vm.newComment = {};
+        vm.newComment = new RequestFactory();
         // $state.go
       });
   };

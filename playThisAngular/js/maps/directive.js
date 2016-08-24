@@ -43,7 +43,9 @@ angular
                       var obj = {
                         "placeId" : place.place_id,
                         "name" : place.name,
-                        "street" : place.formatted_address
+                        "street" : place.formatted_address,
+                        "latitude": place.geometry.location.lat(),
+                        "longitude": place.geometry.location.lng()
                       };
                       // console.log(obj);
 
@@ -51,14 +53,16 @@ angular
                       newVenue.placeId = obj.placeId;
                       newVenue.name = obj.name;
                       newVenue.street = obj.street;
-                      console.log(newVenue); //works!!
+                      newVenue.latitude = obj.latitude;
+                      newVenue.longitude = obj.longitude;
+                      console.log(newVenue);
 
                       newVenue.$save().then(function(res) {
-                        console.log("dayum: ");
                         console.log(res);
+                        console.log(err);
                         $state.go('venueShow', {id: res.id});
 
-                      })
+                      }).catch(function(err) {console.log("Error: ", err);});
 
                       //console.log(railsMapObj);
                         // console.log("clicked");
