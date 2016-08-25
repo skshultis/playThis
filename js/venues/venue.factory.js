@@ -5,14 +5,14 @@ angular
 
 
 function VenueFactoryFunc($resource){
-  return $resource("http://localhost:3000/venues/:id", {}, {
+  return $resource("https://playthis.herokuapp.com/venues/:id", {}, {
     'get': {method: 'GET',
             interceptor : {responseError : venueResourceErrorHandler}}
   });
 }
 
 function RequestFactoryFunc($resource){
-  return $resource("http://localhost:3000/requests/:id", {}, {});
+  return $resource("https://playthis.herokuapp.com/requests/:id", {}, {});
 }
 
 function venueResourceErrorHandler(response) {

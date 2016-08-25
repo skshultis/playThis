@@ -130,5 +130,5 @@ angular
 
 
 function VenueFactoryFunc($resource){
-  return $resource("http://localhost:3000/venues/:id", {}, {});
+  return $resource("https://playthis.herokuapp.com/venues/:id", {}, {});
 }
