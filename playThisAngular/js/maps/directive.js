@@ -12,17 +12,18 @@ angular
       scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
       google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
         scope.$apply(function() {
+          map.panBy(0,-200);
           model.$setViewValue(element.val());
-          var place = scope.gPlace.getPlace();
+          place = scope.gPlace.getPlace();
           if (!place.geometry) {
             return;
           }
           if (place.geometry.viewport) {
             map.fitBounds(place.geometry.viewport);
+            map.panBy(0,-200);
           } else {
-            map.setCenter(place.geometry.location);
+            map.panBy(0,-200);
             map.setZoom(17);
-            map.panBy(0, -200);
 
           }
           var geocoder = new google.maps.Geocoder();
@@ -34,115 +35,38 @@ angular
               longitude = results[0].geometry.location.lng();
             }
           });
-          var image = '../assets/img/playthismap1.png';
-          var marker = new google.maps.Marker({
+          image = '../assets/img/playthismap1.png';
+          marker = new google.maps.Marker({
             map: map,
-            icon: image,
-
+            icon: image
           });
+
           image = marker;
-
-
-
-
-
-
-
-
 
           image.addListener("click", function() {
             var obj = {
               "placeId" : place.place_id,
               "name" : place.name,
-              "street" : place.formatted_address
+              "street" : place.formatted_address,
+              "latitude": place.geometry.location.lat(),
+              "longitude": place.geometry.location.lng()
             };
-<<<<<<< HEAD
             // console.log(obj);
 
             var newVenue = new VenueFactory();
             newVenue.placeId = obj.placeId;
             newVenue.name = obj.name;
             newVenue.street = obj.street;
-            console.log(newVenue); //works!!
+            newVenue.latitude = obj.latitude;
+            newVenue.longitude = obj.longitude;
+            console.log(newVenue);
 
             newVenue.$save().then(function(res) {
-              console.log("dayum: ");
               console.log(res);
+              //console.log(err);
               $state.go('venueShow', {id: res.id});
 
-=======
-            scope.gPlace = new google.maps.places.Autocomplete(element[0], options);
-            google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-                scope.$apply(function() {
-                    model.$setViewValue(element.val());
-                    var place = scope.gPlace.getPlace();
-                    if (!place.geometry) {
-                        return;
-                    }
-                    if (place.geometry.viewport) {
-                        map.fitBounds(place.geometry.viewport);
-                    } else {
-                        map.setCenter(place.geometry.location);
-                        map.setZoom(17);
-                    }
-                    var geocoder = new google.maps.Geocoder();
-                    geocoder.geocode({
-                        placeId: place.place_id
-                    }, function(results, status) {
-                        if (status == google.maps.GeocoderStatus.OK) {
-                            latitude = results[0].geometry.location.lat();
-                            longitude = results[0].geometry.location.lng();
-                        }
-                    });
-                    var image = '../assets/img/playthismap1.png';
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        icon: image
-                    });
-                    image = marker;
-                    image.addListener("click", function() {
-                      var obj = {
-                        "placeId" : place.place_id,
-                        "name" : place.name,
-                        "street" : place.formatted_address,
-                        "latitude": place.geometry.location.lat(),
-                        "longitude": place.geometry.location.lng()
-                      };
-                      // console.log(obj);
-
-                      var newVenue = new VenueFactory();
-                      newVenue.placeId = obj.placeId;
-                      newVenue.name = obj.name;
-                      newVenue.street = obj.street;
-                      newVenue.latitude = obj.latitude;
-                      newVenue.longitude = obj.longitude;
-                      console.log(newVenue);
-
-                      newVenue.$save().then(function(res) {
-                        console.log(res);
-                        //console.log(err);
-                        $state.go('venueShow', {id: res.id});
-
-                      }).catch(function(err) {console.log("Error: ", err);});
-
-                      //console.log(railsMapObj);
-                        // console.log("clicked");
-                        // console.log(place.place_id);
-                        // console.log(place.name);
-                        // console.log(place.formatted_address);
-                        // console.log("Latitude : " + latitude);
-                        // console.log("Longitude : " + longitude);
-                    });
-                    marker.setPlace({
-                        placeId: place.place_id,
-                        location: place.geometry.location
-                    });
-                    var placesService = new google.maps.places.PlacesService(map);
-                    marker.setVisible(true);
-                });
->>>>>>> ad6a069ddad17afde21a2b0ca6c104c55b13b413
-            })
-
+            }).catch(function(err) {console.log("Error: ", err);});
 
           });
           marker.setPlace({
@@ -150,16 +74,14 @@ angular
             location: place.geometry.location
           });
           var placesService = new google.maps.places.PlacesService(map);
-
           marker.setVisible(true);
 
-
-
-
         });
-      })
+
+
+      });
     }
-  };
+  }
 
 }]);
 
