@@ -97,10 +97,18 @@ video.fillWidth {
 
 .searchBoxParent:hover {
   background-color: rgb(107, 27, 108);
-
+  transition: 1s;
+  transform: scale(1.1);
 
 }
 
+
+.searchBoxParent:focus {
+  background-color: rgb(107, 27, 108);
+  transition: 1s;
+  transform: scale(1.1);
+
+}
 
 /*******************
 VENUE SHOW PAGE
