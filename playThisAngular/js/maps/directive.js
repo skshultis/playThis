@@ -22,7 +22,7 @@ angular
             map.fitBounds(place.geometry.viewport);
             map.panBy(0,-200);
           } else {
-            map.panBy(0,-200);
+            // map.panBy(0,-200);
             map.setZoom(17);
 
           }
@@ -42,8 +42,23 @@ angular
           });
 
           image = marker;
+          marker.setVisible(true);
+
+          marker.setPlace({
+            placeId: place.place_id,
+            location: place.geometry.location
+          });
+
+          var placesService = new google.maps.places.PlacesService(map);
+
 
           image.addListener("click", function() {
+            image = marker;
+
+
+
+
+
             var obj = {
               "placeId" : place.place_id,
               "name" : place.name,
@@ -53,6 +68,8 @@ angular
             };
             // console.log(obj);
 
+
+
             var newVenue = new VenueFactory();
             newVenue.placeId = obj.placeId;
             newVenue.name = obj.name;
@@ -61,23 +78,49 @@ angular
             newVenue.longitude = obj.longitude;
             console.log(newVenue);
 
+
             newVenue.$save().then(function(res) {
+
               console.log(res);
-              //console.log(err);
+
+
               $state.go('venueShow', {id: res.id});
 
-            }).catch(function(err) {console.log("Error: ", err);});
+            }).catch(function(res) {
+
+              placeId = res.config.data.placeId;
+              ven = VenueFactory.query({}, function(response){
+                for (var property in response) {
+                  if(response[property].placeId === res.config.data.placeId) {
+                    $state.go('venueShow', {id: response[property].id})
+                  }
+                }
+
+              });
+
+
+              for(i = 0; i < ven.length; i++){
+                if(ven.i.placeId === res.config.data.placeId){
+                  console.log("i am the same poop");
+                  console.log(ven[i]);
+                } else {
+                  console.log("i am not the same")
+                }
+              }
+              console.log(ven)
+
+              $state.go('venueShow', {placeId: res.config.data.placeId})
+              //Doesn't work. Need to somehow get associated id from placeId,
+              // set newvenue.id in .catch and redirect to the id's show page.
+
+            });
+
+
+
+
 
           });
-          marker.setPlace({
-            placeId: place.place_id,
-            location: place.geometry.location
-          });
-          var placesService = new google.maps.places.PlacesService(map);
-          marker.setVisible(true);
-
         });
-
 
       });
     }
