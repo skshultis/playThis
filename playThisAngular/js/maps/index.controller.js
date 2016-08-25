@@ -3,7 +3,6 @@ angular
 .module('playThisMap')
 .controller("MapIndexController", ["$scope", MapIndexControllerFunction])
 
-
 function MapIndexControllerFunction($scope){
   console.log("In the Map controller");
   map = $scope.map;
@@ -52,9 +51,6 @@ function MapIndexControllerFunction($scope){
           'Error: Your browser doesn\'t support geolocation.');
   };
 
-
 }
-
-
 
 })();

@@ -12,10 +12,6 @@ angular
   .factory("railsPassFactory" [railsPassFactoryFunction]);
 
 
-
-
-
-
 function RouterFunction($stateProvider) {
   console.log("Router Invoked");
   $stateProvider
@@ -43,5 +39,3 @@ function RouterFunction($stateProvider) {
 function railsPassFactoryFunction(railsMapObj) {
   return railsMapObj
 }
-
-//Tyler doesn't know how git pull works!

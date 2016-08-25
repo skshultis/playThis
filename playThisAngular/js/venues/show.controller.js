@@ -19,27 +19,18 @@ function VenueShowControllerFunction(VenueFactory, RequestFactory, $stateParams,
   //vm.newComment.venue_id =  vm.venue.id;
   vm.newVenue = new VenueFactory();
 
-  // if (railsPassFactory) {
-  //   var createVenue = function(railsPassFactory){
-  //     vm.newVenue.placeId = railsPassFactory.placeId;
-  //     vm.newVenue.name = railsPassFactory.name;
-  //     vm.newVenue.street = railsPassFactory.street;
-  //     console.log(vm.newVenue);
-  //   }
-  //   createVenue(railsPassFactory)
-  //   railsMapObj = {};
-  // }
-
-
   vm.create = function(){
+
       vm.newComment.venue_id = vm.venue.id;
+      if (vm.newComment.content != null) {
       vm.newComment.$save().then(function(response) {
-        console.log(response);
-        //console.log(vm.newComment)
+
         vm.venue.requests.push(response);
         vm.newComment = new RequestFactory();
         // $state.go
+
       });
+    }
   };
 
 }

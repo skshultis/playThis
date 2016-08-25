@@ -1,4 +1,3 @@
-
 angular
 .module('playThisMap')
 .factory("VenueFactory", ["$resource", VenueFactoryFunc])
@@ -114,7 +113,6 @@ angular
     };
 
 }]);
-
 
 function VenueFactoryFunc($resource){
   return $resource("http://localhost:3000/venues/:id", {}, {});
