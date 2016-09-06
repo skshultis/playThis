@@ -3,3 +3,5 @@
 require_relative 'config/environment'
 
 run Rails.application
+
+# this should probably configurations for rack origins

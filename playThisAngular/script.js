@@ -1,3 +1,4 @@
+// i'd rename this file app to be slightly more descriptive
 angular
 .module("playThis", [
   "ui.router",
@@ -10,7 +11,10 @@ angular
     RouterFunction
   ])
   .factory("railsPassFactory" [railsPassFactoryFunction]);
-
+// instead of the above, you're going to want something like this:
+// .controller('HomeController', ["NameService", HomeControllerCallback])
+// .controller('OtherController', ["NameService", OtherControllerCallback])
+// .service('NameService', NameServiceCallback)
 
 function RouterFunction($stateProvider) {
   console.log("Router Invoked");
