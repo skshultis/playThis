@@ -1,3 +1,4 @@
+# leverages scaffolding
 class VenuesController < ApplicationController
   before_action :set_venue, only: [:show, :update, :destroy]
 
@@ -20,6 +21,7 @@ class VenuesController < ApplicationController
     if @venue.save
       render json: @venue, status: :created, location: @venue
     else
+      # this might be a place to add custom error handling for uniqueness i.e. a render json for the already existing object
       render json: @venue.errors, status: :unprocessable_entity
     end
   end

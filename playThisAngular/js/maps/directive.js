@@ -1,3 +1,4 @@
+// rather than creating a duplicated factory function, you could inject a custom service into both the factory and into this file as well, thereby linking the two. see my comment in script.js
 angular
 .module('playThisMap')
 .factory("VenueFactory", ["$resource", VenueFactoryFunc])
@@ -112,13 +113,7 @@ angular
               $state.go('venueShow', {placeId: res.config.data.placeId})
               //Doesn't work. Need to somehow get associated id from placeId,
               // set newvenue.id in .catch and redirect to the id's show page.
-
             });
-
-
-
-
-
           });
         });
 

@@ -20,6 +20,7 @@ class RequestsController < ApplicationController
     if @request.save
       render json: @request, status: :created, location: @request
     else
+      # insert uniqueness error handling here, could add upvote functionality you all mentioned
       render json: @request.errors, status: :unprocessable_entity
     end
   end
