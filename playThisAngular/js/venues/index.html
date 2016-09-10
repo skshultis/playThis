@@ -1,9 +1,12 @@
 <h2>These are all the Venues</h2>
 
 <ul>
-  <li data-ng-repeat="venue in VenueIndexViewModel.venues">
-    <a data-ui-sref="venueShow({id: venue.id})">
-      {{venue.name}}
-    </a>
-  </li>
+
+<li data-ng-repeat="venue in VenueIndexViewModel.venues">
+  <a data-ui-sref="venueShow({id: venue.id})">
+    {{venue.name}}
+  </a>
+
+</li>
+
 </ul>

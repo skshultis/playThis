@@ -21,7 +21,7 @@ module PlayThisApi
 
 
 
-  # rack-cors config
+
 
 
 
