@@ -55,10 +55,6 @@ angular
           image.addListener("click", function() {
             image = marker;
 
-
-
-
-
             var obj = {
               "placeId" : place.place_id,
               "name" : place.name,
@@ -68,8 +64,6 @@ angular
             };
             // console.log(obj);
 
-
-
             var newVenue = new VenueFactory();
             newVenue.placeId = obj.placeId;
             newVenue.name = obj.name;
@@ -78,11 +72,9 @@ angular
             newVenue.longitude = obj.longitude;
             console.log(newVenue);
 
-
             newVenue.$save().then(function(res) {
 
               console.log(res);
-
 
               $state.go('venueShow', {id: res.id});
 
