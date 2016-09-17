@@ -1,0 +1,10 @@
+{
+  "name": "playThis",
+  "description": "Our playThis app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+  }
+}
